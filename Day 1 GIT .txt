@@ -1,1 +1,1 @@
-Day 1- GIT SSH key, branching, conflict reslxxxx.
+Day 1- GIT SSH key, branching, conflict resolution.
