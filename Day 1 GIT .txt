@@ -1,1 +1,14 @@
+1. Learnt about ssh key creation.
+2. then linking our local directory to a repo using remote add origin
+3. then staging our code
+4. pushing it upstream
+5. creating a branch locally and making changes in it.
+6. switching back to main and merging the branch into main.
+7. Then pushing the code... after code we pushed the branch as well.
+8. Now we created 2 branches, made changes in both.
+9. we tried merging first branch to main, it worked.
+10. but now when we tried merging the second one then it caused merge conflict as both the branches had changes in the same line.
+11. we solved the merge conflict and pushed the code as well as branch.
+
+DONE...
 Day 1- GIT SSH key, branching, conflict resolution.
