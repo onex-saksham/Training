@@ -1,3 +1,17 @@
+/*
+ * This section documents the process of creating SSH keys, which are essential for secure authentication in various systems,
+ * especially when interacting with remote repositories such as GitHub or GitLab.
+ *
+ * Key Points Covered:
+ * - Introduction to SSH (Secure Shell) and its role in secure communication.
+ * - Step-by-step instructions on generating a new SSH key pair using tools like ssh-keygen.
+ * - Explanation of the difference between public and private keys, and the importance of keeping the private key secure.
+ * - Guidance on adding the generated public key to remote services for authentication.
+ * - Best practices for managing SSH keys, including setting strong passphrases and regularly rotating keys.
+ * - Troubleshooting common issues encountered during SSH key creation and usage.
+ *
+ * This documentation aims to provide a comprehensive understanding of SSH key creation and its significance in secure development workflows.
+ */
 1. Learnt about ssh key creation.
 2. then linking our local directory to a repo using remote add origin
 3. then staging our code
@@ -12,3 +26,50 @@
 
 DONE...
 Day 1- GIT SSH key, branching, conflict resolution.
+Important Git & SSH Commands to Remember:
+------------------------------------------
+1. Generate SSH Key:
+    ssh-keygen -t ed25519 -C "your_email@example.com"
+
+2. Add SSH key to ssh-agent:
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519
+
+3. Add remote repository:
+    git remote add origin git@github.com:username/repo.git
+
+4. Stage files:
+    git add .
+
+5. Commit changes:
+    git commit -m "your commit message"
+
+6. Push to remote:
+    git push origin main
+
+7. Create a new branch:
+    git branch branch_name
+
+8. Switch branches:
+    git checkout branch_name
+
+9. Merge a branch into main:
+    git checkout main
+    git merge branch_name
+
+10. Push a branch:
+     git push origin branch_name
+
+11. View branches:
+     git branch
+
+12. Check status:
+     git status
+
+13. Resolve merge conflicts:
+     # Edit conflicted files, then:
+     git add .
+     git commit
+
+14. View remote URLs:
+     git remote -v
