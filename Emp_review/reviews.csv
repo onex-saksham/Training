@@ -1,2 +1,4 @@
 ID,Name,DOJ,Salary,UnderInvestigation,ManagerRating,ColleagueRating,PersonalRating,Closed,Open,Timely,OnTime,EarlyLeaves,FinalScore,Increment%
 1,sa,2003-01-12,10.0,true,5.0,5.0,5.0,100,20,80,20,2,10.00,15.00
+2,sa,2003-10-12,10.0,false,5.0,5.0,5.0,100,20,70,20,2,10.00,15.00
+1,sa,2003-10-12,9.0,false,5.0,5.0,5.0,50,10,30,10,9,10.00,15.00
