@@ -1,0 +1,14 @@
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/Main.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/exercise/Book.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/exercise/BookRepository.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/exercise/BookService.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/junit/BankAccount.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/junit/PaymentService.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/junit/TransactionLogger.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/loose/coupling/Subject.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/loose/coupling/Topic.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/loose/coupling/Topic1.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/loose/coupling/Topic2.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/tight/coupling/Subject.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/tight/coupling/Topic1.java
+/home/admin1/Desktop/Training/Day 3 TestingLec/coupling/src/main/java/org/example/tight/coupling/Topic2.java

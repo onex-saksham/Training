@@ -1,0 +1,11 @@
+Logging and Debugging
+Always start reading errors from last line as that is where the issue usually is.
+
+stack trace- the terminal result where we read errors.
+
+There are multiple levels of logging.
+Priority levels are top down.
+
+Check step over, step into and watch expression.
+
+exrecise: fix error, add logging and do debugging on debug file

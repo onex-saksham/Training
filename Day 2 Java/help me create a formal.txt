@@ -1,0 +1,11 @@
+help me create a formal employee review system in java as a practice project, make sure all classes are in a new file to optimise code scalibitly
+ok within this system lets add a few things lets rate the employees on following parameters
+1. no of jira tickets closed- additional points
+2. no of jira ticktes no closed- negative
+3. if under any inspection like posh- negative score
+4. if overall review good give incremnet between 1-10% if package under 15 lpa if over 15 lpa only give 1-5%
+5. if overall review negative give review
+ok include factors like date of joining and jira ticket evaluation should be based on the amount of time  the employee has been working for if he has been working for less then 1 year say he cant be evaluated, also add manger review, personal review, and colleague review, also add how often the emplyee is on time how often he leaves early and how often he completes his jira tickets on time
+
+yes great also based all these factor we will also suggest the amount of increment the emplyoee should get if his salary is under 15 lpa incremenet can range between 5-15% based on performance 
+if the employee is above 15 lpa he can get incremnet of 0-7%
