@@ -19,10 +19,15 @@ public class ReviewService {
             return;
         }
 
+        // Normalize Jira metrics by months worked
+        double closedTicketsPerMonth = (double) jira.getClosedTickets() / tenureMonths;
+        double openTicketsPerMonth = (double) jira.getOpenTickets() / tenureMonths;
+        double timelyCompletedPerMonth = (double) jira.getTimelyCompleted() / tenureMonths;
+
         double score = review.average();
-        score += jira.getClosedTickets() * 0.2;
-        score -= jira.getOpenTickets() * 0.2;
-        score += jira.getTimelyCompleted() * 0.1;
+        score += closedTicketsPerMonth * 0.5;
+        score -= openTicketsPerMonth * 0.3;
+        score += timelyCompletedPerMonth * 0.4;
         score += attendance.getDaysOnTime() * 0.05;
         score -= attendance.getEarlyLeaves() * 0.1;
 
@@ -30,7 +35,7 @@ public class ReviewService {
             score -= 2.0;
         }
 
-        score = Math.max(0, Math.min(10, score)); // Clamp
+        score = Math.max(0, Math.min(10, score)); // Clamp score between 0 and 10
 
         double increment = IncrementCalculator.calculateIncrement(score, emp.getSalaryLPA());
 
@@ -43,4 +48,4 @@ public class ReviewService {
 
         CSVHelper.writeToCSV(emp, review, jira, attendance, score, increment);
     }
-}
+}    

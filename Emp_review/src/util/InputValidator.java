@@ -65,4 +65,45 @@ public class InputValidator {
             System.out.println("❌ Enter either 'true' or 'false'.");
         }
     }
+    public static boolean validateName(String name) {
+        return name.matches("[A-Za-z ]+");
+    }
+
+    public static LocalDate validateDate(String input) {
+        try {
+            return LocalDate.parse(input, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+
+    public static double validateDouble(String input, double min, double max) {
+        try {
+            double val = Double.parseDouble(input);
+            if (val < min || val > max) throw new NumberFormatException();
+            return val;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a number between " + min + " and " + max + ".");
+            return -1;
+        }
+    }
+
+    public static int validateInteger(String input, int min, int max) {
+        try {
+            int val = Integer.parseInt(input);
+            if (val < min || val > max) throw new NumberFormatException();
+            return val;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter an integer between " + min + " and " + max + ".");
+            return -1;
+        }
+    }
+
+    public static boolean validateBoolean(String input) {
+        if (input.equalsIgnoreCase("true") || input.equalsIgnoreCase("false")) {
+            return Boolean.parseBoolean(input);
+        } else {
+            throw new IllegalArgumentException("Invalid input. Enter 'true' or 'false'.");
+        }
+    }
 }
