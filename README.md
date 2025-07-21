@@ -62,4 +62,3 @@ This document outlines a 5-week technical training plan. Each week focuses on a 
 | 13-Aug     | Day 23 | Spring Security Basics           |
 
 ---
-### Credits:-  
