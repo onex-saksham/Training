@@ -1,0 +1,2 @@
+ls -a for list hidden files
+pwd current directory path
