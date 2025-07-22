@@ -1,72 +1,76 @@
 import logging
 
-logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(message)s')
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 def parse_transactions(raw_data):
-    logging.debug("Starting to parse transactions...")
+    logging.info("Parsing transactions...")
     transactions = []
+    parsed_count = 0
+    skipped_count = 0
+    error_count = 0
+
     for idx, record in enumerate(raw_data):
-        logging.debug(f"Raw record [{idx}]: {record}")
         parts = record.split(",")
         try:
             if len(parts) < 4:
-                logging.warning(f"Skipping incomplete record: {record}")
+                skipped_count += 1
+                logging.warning(f"Skipping incomplete record [{idx}]: {record}")
                 continue
             transaction = {
                 "date": parts[0].strip(),
                 "amount": float(parts[1].strip()),
-                "type": parts[2].strip().lower(), 
+                "type": parts[2].strip().lower(),
                 "description": parts[3].strip()
             }
             transactions.append(transaction)
-            logging.debug(f"Parsed transaction [{idx}]: {transaction}")
+            parsed_count += 1
         except ValueError as e:
-            logging.error(f"Failed to parse record [{idx}]: {record} | Error: {e}")
-    logging.debug(f"Total valid transactions parsed: {len(transactions)}")
+            error_count += 1
+            logging.error(f"Error parsing record [{idx}]: {record} | {e}")
+
+    logging.info(f"Parsed: {parsed_count}, Skipped: {skipped_count}, Errors: {error_count}")
     return transactions
 
 def calculate_balance(transactions):
-    logging.debug("Starting balance calculation...")
+    logging.info("Calculating balance...")
     balance = 0
-    for idx, txn in enumerate(transactions):
-        logging.debug(f"Processing txn [{idx}]: {txn}")
+    credit_count = 0
+    debit_count = 0
+    for txn in transactions:
         if txn["type"] == "credit":
             balance += txn["amount"]
-            logging.debug(f"Credited {txn['amount']}, balance now: {balance}")
+            credit_count += 1
         elif txn["type"] == "debit":
             balance -= txn["amount"]
-            logging.debug(f"Debited {txn['amount']}, balance now: {balance}")
+            debit_count += 1
         else:
             logging.warning(f"Unknown transaction type: {txn['type']}")
-    logging.info(f"Final calculated balance: {balance}")
+    logging.info(f"Total credits: {credit_count}, debits: {debit_count}, final balance: {balance}")
     return round(balance, 2)
 
 def generate_summary(transactions):
-    logging.debug("Generating summary...")
+    logging.info("Generating summary...")
     credit_count = sum(1 for t in transactions if t["type"] == "credit")
     debit_count = sum(1 for t in transactions if t["type"] == "debit")
     total_credit_amount = sum(t["amount"] for t in transactions if t["type"] == "credit")
-
     average_credit = total_credit_amount / credit_count if credit_count > 0 else 0
 
     try:
         largest_txn = max(transactions, key=lambda t: t["amount"])
-        logging.debug(f"Largest transaction: {largest_txn}")
     except ValueError:
         largest_txn = None
-        logging.warning("No valid transactions to determine largest.")
+        logging.warning("No transactions to determine the largest.")
 
-    summary = {
+    logging.info(f"Summary: Credits={credit_count}, Debits={debit_count}, Avg Credit={average_credit:.2f}")
+    return {
         "credits": credit_count,
         "debits": debit_count,
         "average_credit": round(average_credit, 2),
         "largest_txn": largest_txn
     }
-    logging.debug(f"Summary generated: {summary}")
-    return summary
 
 def main():
-    logging.debug("Starting main()...")
     raw_data = [
         "2025-07-01, 1200, CREDIT, Salary",
         "2025-07-02, 300, debit, Grocery",
@@ -75,7 +79,6 @@ def main():
         "2025-07-05, 400, credit, Freelance, Bonus"
     ]
 
-    logging.debug(f"Raw data: {raw_data}")
     transactions = parse_transactions(raw_data)
     balance = calculate_balance(transactions)
     summary = generate_summary(transactions)
