@@ -1,9 +1,8 @@
 package util;
 
-import model.*;
-
 import java.io.*;
 import java.nio.file.*;
+import model.*;
 
 public class CSVHelper {
     private static final String FILE_PATH = "reviews.csv";
@@ -47,17 +46,28 @@ public class CSVHelper {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             boolean firstLine = true;
-            System.out.println("\n------ All Employee Reviews ------");
+            System.out.println("\n========= EMPLOYEE REVIEW REPORT =========");
+
             while ((line = reader.readLine()) != null) {
                 if (firstLine) {
-                    System.out.println(line); // Header
+                    System.out.println("\n--- Columns ---");
+                    String[] headers = line.split(",");
+                    for (int i = 0; i < headers.length; i++) {
+                        System.out.printf("%-20s", headers[i]);
+                    }
+                    System.out.println("\n------------------------------------------------------------");
                     firstLine = false;
                 } else {
-                    System.out.println(line);
+                    String[] values = line.split(",");
+                    for (String value : values) {
+                        System.out.printf("%-20s", value);
+                    }
+                    System.out.println();
                 }
             }
+            System.out.println("==========================================\n");
         } catch (IOException e) {
             System.err.println("Error reading from CSV: " + e.getMessage());
         }
     }
-}
+}  
